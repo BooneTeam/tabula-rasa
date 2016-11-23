@@ -1,0 +1,148 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ * Comment out tree for active admin
+ *
+ //require_tree .
+*= require_self
+*= require primer
+*= require remodal
+*= require remodal-default-theme
+ */
+
+nav {
+  background: whitesmoke;
+  border-bottom: thin solid lightblue;
+  padding: 1em;
+  .right {
+    float: right;
+  }
+  .left {
+    float: left
+  }
+}
+
+nav.side-nav {
+  margin-top: 1em;
+  width: 15%;
+  &.left {
+    float: left
+  }
+  &.right {
+    float: right
+  }
+}
+
+.logo {
+  margin-right: 2em;
+}
+
+.app-icon img {
+  height: 50px;
+  width: 50px;
+}
+
+.app-icon-small img, .octicon {
+  height: 25px;
+  width: 25px;
+}
+
+.app-icon-small .desc {
+  float: right;
+}
+
+.app-list {
+  margin-top: 1em;
+}
+
+.app-list .column {
+
+  border: none;
+  font-weight: bold;
+  padding: 1em;
+  background: none;
+  outline: none;
+  &.not-in-container {
+    //
+  }
+  &.not-in-container:active,
+  &.added-to-container {
+    color: cornflowerblue;
+    background: whitesmoke;
+  }
+
+  .homepage-link {
+    float: right;
+    visibility: hidden;
+    .octicon {
+      height: 14px;
+    }
+  }
+}
+
+.lead {
+  margin-bottom: 1em !important;
+}
+
+.app-container:hover .homepage-link {
+  visibility: visible;
+}
+
+.app-container:hover .brand-bar {
+  background: linear-gradient(to left, #97f79d, #348d58);
+  height: 1px;
+  margin: 10px 0;
+}
+
+.brand-bar {
+  background: linear-gradient(to left, #99f7f5, #7c89fa);
+  height: 1px;
+  margin: 10px 0;
+}
+
+.add-to-app-button svg {
+  height: 52px;
+}
+
+div[data-remodal-id=login-modal] {
+  background-color: rgba(160, 200, 200, 0.5);
+}
+
+.form-headline {
+  background: white;
+  border-top: thick solid paleturquoise;
+  border-bottom: thick solid goldenrod;
+  right: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.remodal{
+  form{
+    margin-top:1.5em;
+  }
+}
+.remodal-confirm {
+  padding: 1em !important;
+  margin: 1em !important;
+}
+
+.devise-links {
+  margin: 1em;
+  li {
+    display: inline-block;
+  }
+}
+
+.flash {
+  margin-top: 1em;
+}

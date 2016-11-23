@@ -1,0 +1,7 @@
+<div class="container app-list">
+  <div class="columns">
+    <% @apps.each do |app| %>
+        <%= render partial: 'app_button', locals: {app: app} %>
+    <% end %>
+  </div>
+</div>

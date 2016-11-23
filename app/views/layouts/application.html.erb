@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ExampleRails5</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+<!--&lt;!&ndash;Move to partial&ndash;&gt;-->
+<!--<div class="flash flash-full flash-success" hidden>-->
+  <!--<div class="content"> Flash message with an icon goes here.</div>-->
+<!--</div>-->
+
+<!--TODO Move to partial-->
+<div class="remodal new-config-form-remodal" data-remodal-id="new-config-modal">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <h1>Name Your Config</h1>
+  <form name="new-config">
+    <input name='name' class="form-control input-block" type="text" placeholder="My New Mac Pro - SN 12345">
+    <br>
+    <button data-remodal-action="cancel" class="remodal-cancel">Nevermind</button>
+    <button data-remodal-action="confirm" class="remodal-confirm">Create</button>
+  </form>
+</div>
+
+<!--TODO Move to partial-->
+<div data-remodal-id="login-modal">
+  <div class="form-container" id="user-action-form-container">
+  </div>
+</div>
+
+<!--TODO Move to partial-->
+<nav>
+  <div class='left'>
+    <p id="username" data-uid="<%= current_basic_user.try(:id) %>"><%= current_basic_user.try(:email) %></p>
+    <% if current_basic_user %>
+        <%= button_to('Logout', destroy_basic_user_session_path, method: 'delete', class: 'btn btn-sm') %>
+    <% end %>
+  </div>
+  <div class="container">
+    <div class="columns">
+      <div class="column logo left">
+        <a href="/" class="header-logo">
+          <h2>Tabula Rasa</h2>
+        </a>
+        <p class="link-gray">/ˈtäbyo͝olə ˈräsə,ˈräzə/</p>
+      </div>
+      <div class="column right">
+        <form>
+          <div class="input-group">
+            <input id='search-field' class="form-control" type="text" placeholder="Search for an app..">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<%= render 'layouts/left_nav' %>
+
+<%= render 'layouts/right_nav' %>
+
+<%= yield %>
+</body>
+</html>

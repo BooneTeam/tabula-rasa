@@ -1,0 +1,22 @@
+<nav class="side-nav left menu">
+  <!--Move to partial-->
+  <div class="flash flash-full flash-success" hidden>
+    <div class="content"> Flash message with an icon goes here.</div>
+  </div>
+
+  <% if @current_config %>
+      <a class="menu-item selected" id='current-config' data-config-id="<%= @current_config.id %>" href="#">
+        <%= octicon "tools", :"aria-label" => "tools" %>
+        <span class="gray-light" id="current-config-name"><%= @current_config.name %></span>
+      </a>
+      <% @current_config.apps.each do |app| %>
+          <%= render partial: 'app_menu_item', locals: {app:app} %>
+      <% end %>
+  <% else %>
+      <a class="menu-item" href="#">
+        <%= octicon "tools", :"aria-label" => "tools" %>
+        <span class="gray-light">No Config Selected</span>
+      </a>
+  <% end %>
+
+</nav>

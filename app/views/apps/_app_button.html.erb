@@ -1,0 +1,18 @@
+<button data-app-id="<%= app.id %>" class="one-fifth <%= (@current_config && @current_config.contains?(app)) ? 'added-to-container' : 'not-in-container' %>
+column text-center app-container">
+  <a target="_blank" href="<%= app.homepage %>" class="homepage-link text-center tooltipped tooltipped-n" aria-label="Go To App Homepage">
+    <%= octicon "info", :"aria-label" => "info", :height => 10 %>
+  </a>
+  <div class="add-to-app-button" style="clear:both">
+    <% if app.icon_path %>
+        <div class="app-icon"><%= image_tag(app.icon_path) %></div>
+    <% else %>
+        <%= octicon "file-media", :"aria-label" => "info", :height => 50 %>
+    <% end %>
+    <div class="app-name lead">
+      <%= truncate(app.name.titleize, length: 15) %>
+    </div>
+    <div class="brand-bar"></div>
+  </div>
+
+</button>

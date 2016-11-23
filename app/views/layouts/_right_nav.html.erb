@@ -1,0 +1,47 @@
+<% if @current_config %>
+    <nav class="side-nav right menu">
+  <a class="menu-item selected" href="#">
+    <span class="octicon octicon-tools"></span>
+    What To Do Next
+  </a>
+
+
+  <a class="menu-item" href="/system_configs/<%= @current_config.id %>/deploy" download id="deploy">
+    <div class="app-icon-small text-left">
+      <%= octicon "desktop-download", :"aria-label" => "desktop-download" %>
+      <div class="desc">
+        Download Install Package
+      </div>
+    </div>
+  </a>
+
+  <a class="menu-item" href="#" data-remodal-target="new-config-modal">
+    <div class="app-icon-small text-left">
+      <%= octicon "plus", :"aria-label" => "plus" %>
+      <div class="desc">
+        Create a new config
+      </div>
+    </div>
+  </a>
+
+  <div class="menu-item" href="#">
+    <div class="app-icon-small text-left">
+
+      <dl class="form-group">
+        <dd>
+          <select class="form-select" id="config-select" placeholder='Manage Config'>
+            <% @all_configs.each do |config| %>
+                <option value="<%= config.id %>"><%= config.name %></option>
+            <% end %>
+          </select>
+        </dd>
+      </dl>
+
+      <!--<div class="desc">-->
+      <!--Manage Configs-->
+      <!--</div>-->
+    </div>
+  </div>
+
+</nav>
+<% end %>

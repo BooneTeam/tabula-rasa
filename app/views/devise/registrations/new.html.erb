@@ -1,0 +1,28 @@
+<% if @has_layout %>
+    <div class="layout-for-devise container">
+<% end %>
+<h2 class="lead form-headline text-uppercase">Sign up to create a config</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+    <dl class="form-group">
+    <dt><label>Email</label></dt>
+    <%= f.email_field :email, class: 'input-block', required:true %>
+
+    <dt><label>Password</label></dt>
+    <%= f.password_field :password, class: 'input-block', required:true, minlength: 6 %>
+
+    <dt><label>Password Confirmation</label></dt>
+    <%= f.password_field :password_confirmation, class: 'input-block', required:true, minlength: 6 %>
+    </dl>
+    <br>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class:'remodal-confirm' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+<% if @has_layout %>
+    </div>
+<% end %>
