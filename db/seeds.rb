@@ -9,7 +9,7 @@ require 'csv'
 
 keymap = ['cask_name','homepage','name','url','version']
 
-CSV.foreach("/Users/garrettboone/random_packages/homebrew-cask/casks.csv") do |row|
+CSV.foreach("./public/casks.csv") do |row|
   app = App.find_or_initialize_by(cask_name: row[0])
   keymap.each do |the_key|
     the_index  = keymap.index(the_key)
