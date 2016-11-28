@@ -33,9 +33,9 @@ class SystemConfigsController < ApplicationController
 
   def deploy
     if current_basic_user && current_basic_user.system_configs.find_by(id:params[:id])
-    config = current_basic_user.system_configs.find(params[:id])
-    app =  config.build_script_and_package
-    send_file app
+      config = current_basic_user.system_configs.find(params[:id])
+      app =  config.build_script_and_package
+      send_file app
     else
       redirect_to new_basic_user_registration_path
     end
