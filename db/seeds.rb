@@ -34,7 +34,7 @@ config = user.system_configs.create!(name: 'Work Mac')
 config.apps << [App.first, App.find(2)]
 config.save!
 
-AdminUser.create(email: 'admin@example.com', password: 'password')
+# AdminUser.create(email: 'admin@example.com', password: 'password')
 
 # Install homebrew packages
 # brew tap homebrew/dupes
