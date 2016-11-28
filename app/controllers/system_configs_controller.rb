@@ -28,14 +28,17 @@ class SystemConfigsController < ApplicationController
       html = (render_to_string partial: '/apps/app_menu_item', locals: {app: app}, layout: false)
       json <<  {config: config, app: app, html: html}
     end
-    render json: json
+    render json: { apps: json, config: config }
   end
 
   def deploy
-    config_id = params[:id]
-    config = SystemConfig.find(config_id)
+    if current_basic_user && current_basic_user.system_configs.find_by(id:params[:id])
+    config = current_basic_user.system_configs.find(params[:id])
     app =  config.build_script_and_package
     send_file app
+    else
+      redirect_to new_basic_user_registration_path
+    end
   end
 
   private

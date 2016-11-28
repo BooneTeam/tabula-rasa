@@ -1,7 +1,7 @@
 class SystemConfig < ApplicationRecord
   has_many :system_config_apps
   has_many :apps, through: :system_config_apps
-  belongs_to :basic_user
+  belongs_to :user, class_name: :'BasicUser'
 
   def contains?(app)
     self.apps.include?(app)
@@ -35,7 +35,7 @@ class SystemConfig < ApplicationRecord
   end
 
   def script_name
-    "#{script_directory}/#{self.user.username}-#{self.name.gsub(' ','-')}.sh"
+    "#{script_directory}/#{self.user.id}-#{self.name.gsub(' ','-')}.sh"
   end
 
   def build_script
@@ -53,6 +53,8 @@ class SystemConfig < ApplicationRecord
 function runbrew {
 
 export PATH=/usr/local/bin:$PATH
+
+echo PROGRESS:0
 
 local BREWPATH=$(which brew)
 if test ! $BREWPATH

@@ -15,6 +15,7 @@ $(document).on('turbolinks:load', function () {
     $('#config-select').on('change', function () {
         var configId = $(this).val();
         $currentConfig.data('config-id', configId);
+        $('#deploy').attr('href', '/system_configs/'+configId+'/deploy');
         repopulateLeftNav()
     });
 
@@ -24,9 +25,12 @@ $(document).on('turbolinks:load', function () {
             method: 'GET',
             url: '/system_configs/' + configId
         }).done(function (response) {
+            var apps = response.apps;
+            var config = response.config;
+            $('#current-config').text(config.name);
             $(configList.selector + ' .app-menu-item').remove();
             $('.added-to-container').removeClass('added-to-container');
-            response.forEach(function (item) {
+            apps.forEach(function (item) {
                 addItemUIChanges(item.app.id, item.html);
             })
         })
