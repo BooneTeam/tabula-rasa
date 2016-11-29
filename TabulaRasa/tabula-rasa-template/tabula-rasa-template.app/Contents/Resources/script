@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+# Homebrew
+#
+# This installs some of the common dependencies needed (or at least desired)
+# using Homebrew.
+
+# Check for Homebrew
+
+function runbrew {
+
+export PATH=/usr/local/bin:$PATH
+
+echo PROGRESS:0
+
+local BREWPATH=$(which brew)
+if test ! $BREWPATH
+then
+  echo "  Installing Homebrew for you."
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# echo 'this is your path'
+# echo $PATH
+local BREWPATH=$(which brew)
+# echo $BREWPATH
+# Install Cask
+
+echo "Installing Brew Cask to help install your Apps"
+$BREWPATH install caskroom/cask/brew-cask
+
+
+ echo PROGRESS:0
+ echo 'Installing Alfred ' 
+ sleep 2
+ $BREWPATH cask install alfred
+ echo PROGRESS:50
+ echo 'Installing Robomongo ' 
+ sleep 2
+ $BREWPATH cask install robomongo
+ echo PROGRESS:100
+ echo 'ALERT: Installation Finished | All done here. :)'
+ echo 'Task completed'
+ } 
+ runbrew

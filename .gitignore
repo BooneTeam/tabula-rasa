@@ -23,4 +23,5 @@
 # Ignore Generated Configs
 zips/*
 TabulaRasa/*
+!TabulaRasa/tabula-rasa-template
 

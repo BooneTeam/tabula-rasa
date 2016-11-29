@@ -20,7 +20,13 @@ class SystemConfig < ApplicationRecord
     clean_up
     make_needed_dirs
     file = build_script
-    build_package(file)
+    if Rails.env.development?
+      # this happens in dev to create the template TabulaRasa/tabula-rasa
+      build_package(file)
+    else
+      # In prod we have to use template because platypus doenst exist and work with linux distro on heroku.
+      modify_template(file)
+    end
   end
 
   def make_needed_dirs
@@ -125,6 +131,14 @@ EOF
 
   def app_name
     "#{pkg_created_name}.app"
+  end
+
+  def modify_template(file)
+    system "cp -R TabulaRasa/tabula-rasa-template TabulaRasa/#{pkg_created_name}"
+    system "mv TabulaRasa/#{pkg_created_name}/tabula-rasa-template.app TabulaRasa/#{pkg_created_name}/#{app_name}"
+    system "mv #{file.path} ./TabulaRasa/#{pkg_created_name}/#{app_name}/Resources/script"
+    system "zip -r #{zip_location}/#{zip_name} #{script_directory}/#{pkg_created_name}/#{app_name}"
+    "#{zip_location}/#{zip_name}"
   end
 
   def build_package(file)
