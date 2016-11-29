@@ -94,12 +94,12 @@ $(document).on('turbolinks:load', function () {
         menuItem.remove();
         listItem.removeClass(addedToContainerClass);
         listItem.addClass(notInContainerClass);
-        $('.flash .content').html('<b>App removed from configuration</b>')
-        $('.flash').addClass('flash-warn');
-        $('.flash').slideDown(1000);
-        setTimeout(function () {
-            $('.flash').slideUp(800);
-        }, 3000)
+        //$('.flash .content').html('<b>App removed from configuration</b>')
+        //$('.flash').addClass('flash-warn');
+        //$('.flash').fadeIn(1000);
+        //setTimeout(function () {
+            //$('.flash').fadeOut(800);
+        //}, 3000)
 
     }
 
@@ -124,13 +124,13 @@ $(document).on('turbolinks:load', function () {
         configList.append(html);
         listItem.removeClass(notInContainerClass);
         listItem.addClass(addedToContainerClass);
-        $('.flash').removeClass('flash-warn');
-        $('.flash .content').html('<b>App added to configuration</b>')
+        //$('.flash').removeClass('flash-warn');
+        //$('.flash .content').html('<b>App added to configuration</b>')
 
-        $('.flash').slideDown(1000);
-        setTimeout(function () {
-            $('.flash').slideUp(800);
-        }, 3000)
+        //$('.flash').fadeIn(1000);
+        //setTimeout(function () {
+        //    $('.flash').fadeOut(800);
+        //}, 3000)
     }
 
     $('#search-field').on('keyup', function () {
