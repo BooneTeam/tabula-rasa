@@ -120,17 +120,12 @@ $(document).on('turbolinks:load', function () {
     function addItemUIChanges(appId, html) {
         var appList = $('.app-list');
         var listItem = appList.find('[data-app-id=' + appId + ']');
-
-        configList.append(html);
+        var htmlThing = $(html);
+        configList.append(htmlThing);
+        htmlThing.hide();
+        htmlThing.fadeIn(600);
         listItem.removeClass(notInContainerClass);
         listItem.addClass(addedToContainerClass);
-        //$('.flash').removeClass('flash-warn');
-        //$('.flash .content').html('<b>App added to configuration</b>')
-
-        //$('.flash').fadeIn(1000);
-        //setTimeout(function () {
-        //    $('.flash').fadeOut(800);
-        //}, 3000)
     }
 
     $('#search-field').on('keyup', function () {
