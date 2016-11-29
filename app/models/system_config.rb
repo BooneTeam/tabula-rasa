@@ -20,7 +20,7 @@ class SystemConfig < ApplicationRecord
     clean_up
     make_needed_dirs
     file = build_script
-    if Rails.env.development?
+    if Rails.env.development? && ENV['create_platypus_app']
       # this happens in dev to create the template TabulaRasa/tabula-rasa
       build_package(file)
     else
@@ -136,7 +136,7 @@ EOF
   def modify_template(file)
     system "cp -R TabulaRasa/tabula-rasa-template TabulaRasa/#{pkg_created_name}"
     system "mv TabulaRasa/#{pkg_created_name}/tabula-rasa-template.app TabulaRasa/#{pkg_created_name}/#{app_name}"
-    system "mv #{file.path} ./TabulaRasa/#{pkg_created_name}/#{app_name}/Resources/script"
+    system "mv #{file.path} TabulaRasa/#{pkg_created_name}/#{app_name}/Contents/Resources/script"
     system "zip -r #{zip_location}/#{zip_name} #{script_directory}/#{pkg_created_name}/#{app_name}"
     "#{zip_location}/#{zip_name}"
   end
